@@ -1,0 +1,93 @@
+{
+  "name": "HRMS-Flask",
+  "description": "Human Resource Management System built with Flask and Tailwind CSS",
+  "version": "1.0.0",
+  "rules": {
+    "project_structure": {
+      "root": {
+        "app/": {
+          "templates/": {
+            "auth/": ["login.html", "register.html", "reset_password.html"],
+            "dashboard/": ["index.html", "profile.html"],
+            "employees/": ["list.html", "add.html", "edit.html", "view.html"],
+            "departments/": ["list.html", "add.html", "edit.html"],
+            "leaves/": ["list.html", "request.html", "approve.html"],
+            "payroll/": ["list.html", "generate.html", "view.html"],
+            "settings/": ["company.html", "system.html"],
+            "shared/": ["base.html", "navbar.html", "sidebar.html"]
+          },
+          "static/": {
+            "css/": ["tailwind.css", "custom.css"],
+            "js/": ["main.js", "charts.js"],
+            "img/": []
+          },
+          "models/": {
+            "user.py": "User model definition",
+            "employee.py": "Employee model definition", 
+            "department.py": "Department model definition",
+            "leave.py": "Leave model definition",
+            "payroll.py": "Payroll model definition"
+          },
+          "routes/": {
+            "auth.py": "Authentication routes",
+            "dashboard.py": "Dashboard routes",
+            "employee.py": "Employee management routes",
+            "department.py": "Department management routes", 
+            "leave.py": "Leave management routes",
+            "payroll.py": "Payroll management routes",
+            "settings.py": "Settings routes"
+          },
+          "utils/": {
+            "decorators.py": "Custom decorators",
+            "helpers.py": "Helper functions",
+            "constants.py": "System constants"
+          }
+        },
+        "config/": {
+          "config.py": "Application configuration",
+          "database.py": "Database configuration"
+        },
+        "migrations/": "Database migrations",
+        "tests/": "Unit and integration tests",
+        ".env": "Environment variables",
+        "requirements.txt": "Project dependencies"
+      }
+    },
+    "dependencies": {
+      "python": ["flask", "flask-sqlalchemy", "flask-login", "flask-migrate", "python-dotenv"],
+      "frontend": ["tailwindcss", "alpinejs", "chart.js"]
+    },
+    "database": {
+      "type": "mysql",
+      "models": ["User", "Employee", "Department", "Leave", "Payroll", "Attendance"]
+    },
+    "features": [
+      "Authentication & Authorization",
+      "Employee Management",
+      "Department Management", 
+      "Leave Management",
+      "Attendance Tracking",
+      "Payroll Management",
+      "Performance Reviews",
+      "Document Management",
+      "Reports & Analytics",
+      "Company Settings"
+    ],
+    "code_style": {
+      "python": {
+        "formatter": "black",
+        "linter": "flake8",
+        "max_line_length": 88
+      },
+      "html": {
+        "formatter": "prettier"
+      }
+    },
+    "security": {
+      "authentication": "flask-login",
+      "password_hashing": "werkzeug.security",
+      "csrf_protection": true,
+      "role_based_access": true
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else 'HRMS' }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#6B7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .content-wrapper {
+            height: calc(100vh - 4rem); /* 4rem est la hauteur de la navbar */
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="h-full bg-gray-50 flex flex-col">
+    {% if current_user.is_authenticated %}
+        <div class="fixed top-0 left-0 right-0 z-50">
+            {% include 'shared/navbar.html' %}
+        </div>
+    {% endif %}
+
+    <div class="{% if current_user.is_authenticated %}mt-16{% endif %}">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+                    {% for message in messages %}
+                        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 rounded-md shadow-sm" role="alert">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 py-4 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-300 text-sm">
+                © 2024 HRMS. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+</body>
+</html> 
